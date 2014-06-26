@@ -2,28 +2,36 @@
 
 var pages = [
     {
-        "name": "wotif homepage",
-        "url": "http://www.wotif.com"
+        name: "wotif homepage",
+        url: "http://www.wotif.com"
     },
     {
-        "name": "wotif search results (25)",
-        "url": "http://www.wotif.com/search/results?region=13851"
+        name: "wotif search results (25)",
+        url: "http://www.wotif.com/search/results?region=13851"
     },
     {
-        "name": "wotif hotel details",
-        "url": "http://www.wotif.com/hotel/View?hotel=W4937"
+        name: "wotif hotel details",
+        url: "http://www.wotif.com/hotel/View?hotel=W4937"
     },
     {
-        "name": "wotif hotel booking",
-        "url": "https://securepayment.wotif.com/booking/View?hotel=W4937&roomTypeId=W1895495&bookingAdapterTarget=W"
+        name: "wotif packages homepage",
+        url: "http://www.wotif.com/packages"
     },
     {
-        "name": "wotif packages homepage",
-        "url": "http://www.wotif.com/packages"
+        name: "wotif packages lionking",
+        url: "http://www.wotif.com/packages/lionking"
     },
     {
-        "name": "wotif flights homepage",
-        "url": "http://www.wotif.com/flights"
+        name: "wotif packages lionking",
+        url: "http://www.wotif.com/packages/wicked"
+    },
+    {
+        name: "wotif flights homepage",
+        url: "http://www.wotif.com/flights"
+    },
+    {
+        name: "holiday rentals homepage",
+        url: "http://www.wotif.com/holiday-rentals"
     }
 ];
 

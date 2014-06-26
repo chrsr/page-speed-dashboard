@@ -11,7 +11,7 @@ With Node, NPM and Bower installed run:
     $ bower install
 
 
-## Getting started
+## Visualisation
 The dashboard runs in your browser.
 
 ### View the dashboard
@@ -25,3 +25,11 @@ localhost:3000/pages.json
 
 ### Test results endpoint
 localhost:3000/results.json
+
+## Extending
+Add more pages.
+
+### Add page
+To add a page to test, update pages.json, include:
+    - Name
+    - URL

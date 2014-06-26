@@ -5,6 +5,10 @@ var pages = [];
 (function() {
     var gps = angular.module('googlePageSpeed', []);
 
+    gps.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.html5Mode(true);
+    }]);
+
     gps.controller('DashboardController', function ($scope, $http) {
         $scope.pages = pages;
         $scope.getResults = function() {
@@ -18,7 +22,8 @@ var pages = [];
         $scope.getResults();
     });
 
-    gps.controller('TestingController', function ($scope, $http) {
+    gps.controller('TestingController', function ($scope, $http, $location) {
+        var testOnLoad = $location.search();
         $scope.runTests = function() {
             $scope.status = 'Testing...';
             $http({method: 'GET', url: '/test'}).success(function (data, status) {
@@ -28,5 +33,8 @@ var pages = [];
                 $scope.status = status;
             });
         };
+        if (testOnLoad.refresh) {
+            $scope.runTests();
+        }
     });
 }());

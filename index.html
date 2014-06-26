@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="googlePageSpeed">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Page Speed Dashboard</title>
+        <link rel="shortcut icon" type="image/icon" href="favicon.ico" />
+        <link rel="stylesheet" href="styles/styles.css">
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+
+        <div id="dashboard" ng-controller="DashboardController as dashboard">
+            <ul class="pages">
+                <li class="page page__{{page.status}}" ng-repeat="page in pages">
+                    <a href="{{page.url}}" class="page__score">{{page.score}}</a>
+                    <h1 class="page__name">{{page.name}}</h1>
+                </li>
+            </ul>
+        </div>
+
+        <div class="actions" ng-controller="TestingController as testing">
+            <h1 ng-show="status" class="actions__status">{{status}}</h1>
+            <button class="actions__button" ng-click="runTests()">Run pagespeed tests</button>
+            <!-- <button class="actions__button" ng-click="runTests()">Add page</button> -->
+        </div>
+
+    </body>
+</html>

@@ -398,10 +398,14 @@ a {
   }
 }
 .page__name {
+  width: 90%;
   margin: 0;
   font-weight: 100;
   font-size: 0.8em;
   color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .page__score {
   display: block;
@@ -419,7 +423,8 @@ a {
   margin-top: 2em;
   text-align: center;
 }
-.actions__status {
+.loading {
+  text-align: center;
   color: #fff;
 }
 .actions__button {

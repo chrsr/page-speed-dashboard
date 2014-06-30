@@ -1,9 +1,14 @@
-/* globals */
+/* globals angular */
 
 var pages = [
     {
         name: "wotif homepage",
         url: "http://www.wotif.com"
+    },
+    {
+        name: "wotif homepage (responsive)",
+        url: "http://www.wotif.com",
+        isMobile: true
     },
     {
         name: "wotif search results (25)",
@@ -35,16 +40,13 @@ var pages = [
     }
 ];
 
-(function() {
+(function () {
     var gps = angular.module('googlePageSpeed', []);
-
-    gps.config(['$locationProvider', function ($locationProvider) {
-        $locationProvider.html5Mode(true);
-    }]);
 
     gps.controller('MainController', ['$scope', function ($scope) {
         $scope.pages = pages;
         $scope.results = [];
+        $scope.loading = true;
     }]);
 
     gps.controller('DashboardController', ['$scope', '$http', '$q', function ($scope, $http, $q) {
@@ -54,9 +56,12 @@ var pages = [
 
         angular.forEach($scope.pages, function (it, key) {
             var url = googleAPIurl + '?url=' + it.url + '&key=AIzaSyBkrQ6gZuncKT0jRXkNr9DqvVATsqBAnZM';
-            promises.push($http({method:'GET', url: url}).then(function (data) {
+            if (it.isMobile) {
+                url += '&strategy=mobile';
+            }
+            promises.push($http({method: 'GET', url: url}).then(function (data) {
                 var result = {
-                    name: data.data.id,
+                    name: data.data.title,
                     score: data.data.score,
                     url: data.data.id,
                     status: (data.data.score > 80) ? 'ok' : 'bad'
@@ -66,12 +71,12 @@ var pages = [
                     result.status = 'bad';
                 }
                 results.push(result);
-                $scope.results = results;
             }));
         });
 
-        $q.all(promises).then(function ($scope) {
-            // all done
+        $q.all(promises).then(function () {
+            $scope.loading = false;
+            $scope.results = results;
         });
 
     }]);

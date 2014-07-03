@@ -1,46 +1,34 @@
-var page = require('webpage').create();
+var casper = require('casper').create();
 var fs = require('fs');
 
-var crawler = (function (page) {
-    var iteration = 0;
-    var urls;
+urls = JSON.parse(fs.read('pages.json'));
+validatedUrls = [];
+var i = -1;
 
-    function openUrl(status) {
-        console.log('OPENED: ', urls[iteration].url, ' STATUS: ', status);
-        if (status !== 'success') {
-            return;
+casper.start('http://www.wotif.com');
+
+casper.then(function () {
+    this.each(urls, function () { 
+        i += 1;
+        this.thenOpen((urls[i].url), function () {
+            this.echo(this.getCurrentUrl());
+            this.capture('screenshots/' + urls[i].name + new Date().getTime() + '.png', {
+                top: 0,
+                left: 0,
+                width: 1024,
+                height: 768
+            });
+        });
+        if (urls[i].thenClick) {
+            this.thenClick(urls[i].thenClick, function() {
+                this.echo(this.getCurrentUrl());
+                this.capture('screenshots/' + urls[i].name + new Date().getTime() + '.png', {
+                    top: 0,
+                    left: 0
+                });
+            });
         }
+    });
+});
 
-        // page actions
-        if (!urls[iteration].completed && urls[iteration].button) {
-            page.injectJs('../bower_components/jquery/dist/jquery.js');
-            page.evaluate(function (button) {
-                jQuery(button).click();
-            }, urls[iteration].button);
-            urls[iteration].completed = true;
-        }
-
-        screenshot = 'screenshots/' + urls[iteration].name + new Date().getTime() + '.jpg';
-        page.render(screenshot, { format: "jpg" });
-
-        iteration += 1;
-        if (iteration < urls.length) {
-            page.open(urls[iteration].url, null);
-        }
-    }
-
-    return {
-        crawl: function () {
-            page.onLoadFinished = function (status) {
-                console.log('another');
-                openUrl(status);
-            };
-            urls = JSON.parse(fs.read('pages.json'));
-            if (urls) {
-                page.open(urls[0].url, null);
-            }
-        }
-    };
-}(page));
-
-crawler.crawl();
+casper.run();

@@ -21,8 +21,16 @@
                 "url": "http://www.wotif.com/search/results?region=13851"
             },
             {
+                "name": "wotif search results (25 hotels) (list view)",
+                "url": "http://www.wotif.com/hotels/results/AU/Bundaberg/13851?variant=photo&checkin=2014-09-10&checkout=2014-09-11&adults=2&flexible=false&children=&offset=0&max=18"
+            },
+            {
                 "name": "wotif hotel details",
                 "url": "http://www.wotif.com/hotel/View?hotel=W4937"
+            },
+            {
+                "name": "wotif hotel details (repsonsive)",
+                "url": "http://www.wotif.com/hotels/details/AU/Bundaberg/13851/W137029?variant=photo&checkin=2014-09-10&checkout=2014-09-11&adults=2&flexible=false&children=&offset=0&max=18"
             },
             {
                 "name": "wotif booking form",

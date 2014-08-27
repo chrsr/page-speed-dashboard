@@ -6,6 +6,7 @@
         <title>Page Speed Dashboard</title>
         <link rel="shortcut icon" type="image/icon" href="favicon.ico" />
         <link rel="stylesheet" href="styles/styles.css">
+        <script src="bower_components/moment/min/moment.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="app.js"></script>
     </head>
@@ -19,8 +20,8 @@
             </div>
             <ul class="pages">
                 <li class="page page__{{result.status}}" ng-repeat="result in results">
-                    <a href="{{result.url}}" class="page__score">{{result.score}}</a>
-                    <h1 class="page__name">{{result.name}}</h1>
+                    <a href="{{result.testUrl}}" class="page__score">{{result.score}}</a>
+                    <h1 class="page__name"><a href="{{result.url}}">{{result.name}}</a></h1>
                 </li>
             </ul>
         </div>

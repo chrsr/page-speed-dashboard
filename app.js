@@ -22,14 +22,14 @@
             },
             {
                 "name": "wotif hotel details",
+                "url": "http://www.wotif.com/hotel/View?hotel=W4937"
+            },
+            {
+                "name": "wotif booking form",
                 "url": "https://securepayment.wotif.com/hotel/booking/W4937/127451?firstDate={{date}}",
                 "date": {
                     format: "YYYY-MM-DD" //2014-08-26
                 }
-            },
-            {
-                "name": "hotel booking form",
-                "url": "http://www.wotif.com/hotel/View?hotel=W4937"
             },
             {
                 "name": "wotif packages home",

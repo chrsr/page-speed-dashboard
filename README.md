@@ -1,6 +1,5 @@
 # Google Page Speed Dashboard
-
-A dashboard to display the page speed score of a set of urls.
+A dashboard to display the Google page speed score for a set of urls.
 
 ## Installation
 With Node and Bower installed run:
@@ -9,3 +8,6 @@ With Node and Bower installed run:
 
 ## Visualisation
 The dashboard runs in your browser. Spin it up with a simple python server.
+
+## Crawler (not in use)
+CasperJS script for generating screen shots of your urls for use within the dashboard.
